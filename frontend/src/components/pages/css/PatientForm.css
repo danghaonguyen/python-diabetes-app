@@ -1,0 +1,324 @@
+/* PatientForm.css */
+
+.patient-form-container {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  padding-bottom: 120px; /* hoặc 200px tùy chiều cao Footer */
+}
+.patient-form-container {
+  zoom: 1.15; /* Phóng to toàn form */
+  box-sizing: border-box;
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #007bff;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.submit-button {
+  grid-column: span 2;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #218838;
+}
+
+.result-box {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #e3f2fd;
+  border-left: 5px solid #007bff;
+  border-radius: 10px;
+  text-align: center;
+}
+/* PatientForm.css */
+
+/* .patient-form-container {
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 40px 30px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 123, 255, 0.15); 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} 
+*/
+
+.form-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #007bff; /* xanh dương rõ */
+  font-weight: 600;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #444;
+  font-size: 0.9rem;
+}
+
+.form-input {
+  padding: 10px 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.submit-button {
+  grid-column: span 2;
+  padding: 14px 0;
+  font-size: 17px;
+  font-weight: 600;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 25px;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.result-box {
+  margin-top: 35px;
+  padding: 18px;
+  background-color: #e3f2fd;
+  border-left: 6px solid #007bff;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #0056b3;
+  font-weight: 600;
+}
+
+.patient-form-container {
+  max-width: 1500px;
+  margin: 100px auto;
+  padding: 40px 30px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  border: 2px solid #3399ff;
+}
+
+/* .patient-form-container {
+  transform: scale(1.13); 
+  transform-origin: top center;
+}
+ */
+.form-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #007bff;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.form-input {
+  padding: 12px 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.4);
+}
+
+.submit-button {
+  padding: 12px 26px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-width: 140px;         
+  white-space: nowrap;           /* Không cho chữ xuống dòng */
+  display: inline-flex;          /* Cho canh giữa biểu tượng + chữ */
+  margin-top: 70px;
+}
+
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+
+.reset-button {
+  padding: 12px 26px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #dc3545; /* đỏ tươi */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-width: 140px;            
+  white-space: nowrap;           /* Không cho chữ xuống dòng */
+  display: inline-flex;          /* Cho canh giữa biểu tượng + chữ */
+  margin-top: 70px;
+  margin-left: 10px;
+}
+
+.reset-button:hover {
+  background-color: #c82333;
+}
+
+
+.result-box {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #e3f2fd;
+  border-left: 6px solid #007bff;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.15rem;
+  color: #0056b3;
+  font-weight: 600;
+}
+
+.form-subtitle {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #888888;
+  margin-top: -10px;
+  margin-bottom: 25px;
+  font-size: 20px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 40px;
+}
+
+/* Đảm bảo BMI (readonly) vẫn có nền */
+.readonly-field,
+.filled-bmi {
+  background-color: #f0f8ff;
+}
+
+.readonly-field {
+  pointer-events: none;         /* Không thể click */
+  color: #333;
+  opacity: 1;                   /* Đảm bảo không mờ */
+  cursor: not-allowed;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Tô nền xanh nhạt khi input có giá trị */
+.form-input:valid {
+  background-color: #f0f8ff;
+}
+
+/* Áp dụng cho select luôn */
+.form-input select:valid {
+  background-color: #f0f8ff;
+}
+
+.compare-chart-button {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.compare-chart-button:hover {
+  background-color: #2d8ae6;
+}
+
