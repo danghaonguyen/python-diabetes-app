@@ -1,0 +1,94 @@
+.features-section {
+  padding: 100px 0 60px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.section-subtitle {
+  color: #00aabb;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 15px;
+}
+
+.section-desc {
+  font-size: 16px;
+  color: #777;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+.heartbeat-img {
+  margin: 20px 0 60px;
+}
+
+.heartbeat-img img {
+  max-width: 100%;
+  height: auto;
+}
+
+.features-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.feature-box {
+  width: 180px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.feature-box:hover {
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 15px;
+  background: rgba(0, 170, 187, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-icon img {
+  width: 56px;
+  height: 56px;
+}
+
+.feature-box p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #222;
+}
+@media (max-width: 767.98px) {
+  .features-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    gap: 30px;
+  }
+
+  .feature-box {
+    width: 100%;
+    max-width: 140px;  /* vừa đủ cho 2 cột trên màn 430px */
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 399.98px) {
+  .features-wrapper {
+    grid-template-columns: 1fr;
+  }
+}

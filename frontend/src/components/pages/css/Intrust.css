@@ -1,0 +1,82 @@
+.intrust-section {
+  background-color: #f8f9fa;
+}
+
+.section-title h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+#intrust {
+  scroll-margin-top: 200px;
+}
+
+.single-intrust {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+.single-intrust:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 170, 187, 0.3);
+  border-color: #00aabb;
+}
+
+.single-intrust i {
+  font-size: 40px;
+  color: #00aabb;
+  margin-bottom: 15px;
+}
+
+.single-intrust h4 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.single-intrust p {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Responsive fix: 1 cột mobile nhỏ, 2 cột tablet nhỏ */
+@media (max-width: 991.98px) {
+  .row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .col-lg-4,
+  .col-md-6 {
+    width: 100% !important;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .single-intrust {
+    padding: 20px 16px;
+  }
+
+  .single-intrust h4 {
+    font-size: 18px;
+  }
+
+  .single-intrust p {
+    font-size: 15px;
+  }
+}
+
+/* 2 cột cho mobile lớn (điện thoại ngang hoặc thiết bị lớn hơn 500px) */
+@media (min-width: 500px) and (max-width: 767.98px) {
+  .row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

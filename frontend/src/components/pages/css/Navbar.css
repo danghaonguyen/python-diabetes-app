@@ -1,0 +1,233 @@
+.navbar-area {
+  background-color: #ffffff;
+  border-bottom: 1px solid #eee;
+}
+
+.navbar {
+  height: 85px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img {
+  max-height: 70px;
+  width: auto;
+  object-fit: contain;
+}
+
+
+.navbar-nav .nav-link {
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #00aabb;
+}
+
+
+.navbar-nav .nav-item {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.navbar-area .container {
+  padding-left: 10px;
+  padding-right: 1px;
+}
+
+.navbar-nav .nav-link {
+  font-size: 19px;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  font-family: inherit;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 1.5;
+
+}
+
+
+.dropdown-user {
+  min-width: 180px;
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  padding: 0.5rem 0;
+}
+
+.dropdown-user .dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  padding: 8px 50px;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.dropdown-user .dropdown-item:hover {
+  background-color: #f2f2f2;
+}
+
+.dropdown-user .icon {
+  width: 30px;
+  text-align: right;
+}
+
+
+
+.nav-link.btn-link svg.dropdown-arrow {
+  stroke: #007b8a;
+  transition: transform 0.2s ease;
+  margin-bottom: 2px;  /* chỉnh sửa cho mũi tên lên cao hơn */
+  width: 12px;
+  height: 12px;
+}
+
+.nav-link.btn-link[aria-expanded="true"] svg.dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+
+/* Dropdown menu user */
+.dropdown-user {
+  min-width: 220px;
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  padding: 0.5rem 0;
+  position: absolute;      /* Để căn vị trí chính xác */
+  right: 0;                /* Căn sát phải phần tử cha */
+  left: auto;              /* Tắt căn trái */
+  top: 100%;               /* Xuống ngay dưới phần tử cha */
+  background-color: white; /* Nền dropdown */
+}
+
+/* Các mục trong dropdown */
+.dropdown-user .dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  padding: 12px 24px;       /* Thu hẹp padding ngang lại */
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.dropdown-user .dropdown-item:hover {
+  background-color: #f2f2f2;
+}
+
+.dropdown-user .icon {
+  width: 30px;
+  text-align: right;
+}
+
+/* Mũi tên dropdown */
+.nav-link.btn-link svg.dropdown-arrow {
+  stroke: #007b8a;
+  transition: transform 0.2s ease;
+  margin-bottom: 2px;   /* Giữ như cũ */
+  width: 12px;
+  height: 12px;
+  position: relative;
+  top: 3px;             /* Đẩy mũi tên xuống cho cân với text */
+  margin-left: 4px;     /* Thêm khoảng cách giữa tên user và mũi tên */
+}
+
+.nav-link.btn-link[aria-expanded="true"] svg.dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* Đảm bảo phần cha có vị trí relative để căn dropdown đúng */
+.dropdown {
+  position: relative;
+}
+
+.toggler-icon {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 5px 0;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin: 0;
+  }
+
+  .navbar-nav {
+    text-align: center;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .navbar-nav .nav-item {
+    margin: 0;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 12px 0;
+    font-size: 18px;
+    font-weight: 500;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+  }
+
+  .navbar-nav .nav-link:last-child {
+    border-bottom: none;
+  }
+
+   .dropdown-user {
+    background-color: white;
+    padding: 8px 0;
+    margin-top: 8px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    width: 90%; /* Gọn hơn */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .dropdown-user .dropdown-item {
+    font-size: 16px;
+    padding: 12px 20px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    gap: 12px;
+  }
+
+  .dropdown-user .dropdown-item:last-child {
+    border-bottom: none;
+  }
+}

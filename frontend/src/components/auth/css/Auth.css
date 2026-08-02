@@ -1,0 +1,128 @@
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #eceef0;
+}
+
+.auth-card {
+  background-color: #ffffff;
+  padding: 40px 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.auth-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #00aabb;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.auth-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #00aabb;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-button:hover {
+  background-color: #008d99;
+}
+
+.auth-link {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.auth-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.back-home {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.back-home:hover {
+  color: #00aabb;
+}
+
+.input-with-toggle {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.input-with-toggle input {
+  flex: 1;
+  padding-right: 60px;
+  box-sizing: border-box;
+}
+
+.toggle-button {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  height: auto;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.auth-card {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  border: 2px solid #00bcd4; /* ✅ Viền xanh theo tông Medic */
+  transition: border-color 0.3s ease;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+/* ✅ Khi hover hoặc focus thì đổi sang viền xanh */
+.auth-input:hover,
+.auth-input:focus {
+  border-color: #00bcd4; /* màu xanh Medic */
+  outline: none;
+}
