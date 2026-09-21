@@ -16,7 +16,12 @@ def create_app():
     # 🔥 FIX QUAN TRỌNG
     app.config.from_object(config)
 
-    CORS(app, supports_credentials=True, origins=["http://127.0.0.1:3000"])
+    CORS(app, supports_credentials=True, origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173"
+    ])
 
     init_db(app)
 

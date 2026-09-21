@@ -1,0 +1,85 @@
+.home-page {
+  color: #243447;
+  font-family: "Poppins", sans-serif;
+}
+
+.home-page h1,
+.home-page h2,
+.home-page h4,
+.home-page h5,
+.home-page p {
+  letter-spacing: 0;
+}
+
+.home-page .slider-content h1 {
+  max-width: 680px;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.18;
+  font-weight: 700;
+}
+
+.home-page .slider-content p {
+  max-width: 620px;
+  font-size: clamp(17px, 1.5vw, 19px);
+  line-height: 1.65;
+}
+
+.home-page .section-subtitle {
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.home-page .section-title,
+.home-page .about-content h2,
+.home-page .intrust-section .section-title h2 {
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.home-page .section-desc,
+.home-page .about-content p {
+  max-width: 680px;
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.home-page .feature-box p,
+.home-page .about-list li {
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.home-page .single-intrust h4,
+.home-page .doctor-card h5 {
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.home-page .single-intrust p,
+.home-page .doctor-card p {
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+@media (max-width: 767.98px) {
+  .home-page .slider-content h1 {
+    font-size: 28px;
+    line-height: 1.25;
+  }
+
+  .home-page .slider-content p,
+  .home-page .section-desc,
+  .home-page .about-content p,
+  .home-page .single-intrust p,
+  .home-page .doctor-card p {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .home-page .section-title,
+  .home-page .about-content h2,
+  .home-page .intrust-section .section-title h2 {
+    font-size: 25px;
+  }
+}

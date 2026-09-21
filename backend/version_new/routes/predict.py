@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, session
 from services.prediction_service import predict_from_input
 from db.db import mysql
 import traceback
@@ -57,6 +57,9 @@ def predict():
         # ===== USER ID =====
         user_id = data.get("user_id")
         user_id = int(user_id) if user_id is not None else None
+
+        if not user_id or session.get('user_id') != user_id:
+            return jsonify({"message": "Vui lòng đăng nhập để dự đoán"}), 401
 
         print("USER_ID:", user_id)
 
