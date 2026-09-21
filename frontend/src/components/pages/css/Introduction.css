@@ -1,30 +1,33 @@
 .doctor-section {
-  padding: 80px 0;
-  background-color: #f9f9f9;
+  padding: 104px 0;
+  background: #fff;
 }
 
 .section-title {
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 10px;
-  color: #222;
+  color: var(--medical-navy);
 }
 
 .section-desc {
   font-size: 16px;
-  color: #666;
+  color: #526579;
   margin-bottom: 40px;
 }
 
 .doctor-card {
   background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 16px;
+  border: 1px solid #dbe7ec;
+  border-radius: 14px;
   padding: 30px 20px;
   text-align: center;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 24px rgba(18, 59, 93, .07);
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .doctor-card:hover {
@@ -35,7 +38,7 @@
 
 .doctor-card .icon i {
   font-size: 48px;
-  color: #00aabb;
+  color: var(--medical-teal);
   margin-bottom: 16px;
 }
 
@@ -49,6 +52,7 @@
 .doctor-card p {
   font-size: 18px;
   color: #555;
+  line-height: 1.6;
 }
 
 #introduction {

@@ -108,6 +108,9 @@ def login():
     if not ok:
         return jsonify({"message": "Sai mật khẩu"}), 401
 
+    session['user_id'] = user['id']
+    session['username'] = user['username']
+
     return jsonify({
         "message": "Đăng nhập thành công",
         "user_id": user["id"],
@@ -116,6 +119,12 @@ def login():
 
 
 # ================== SEND RESET CODE ==================
+@auth_bp.route('/logout', methods=['POST'])
+def logout():
+    session.clear()
+    return jsonify({"message": "Đã đăng xuất"}), 200
+
+
 @auth_bp.route('/send_password_reset', methods=['POST'])
 def send_password_reset():
     data = request.get_json()

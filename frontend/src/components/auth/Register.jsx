@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { registerUser } from "../../services/auth";
+import { registerUser, sendVerificationCode } from "../../services/auth";
 import "./css/Auth.css";
 import { toast, ToastContainer } from "react-toastify";
 
@@ -46,12 +46,7 @@ const Register = () => {
     }
 
     try {
-      await fetch("http://127.0.0.1:5000/api/send_verification_code", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({ email: emailClean }),
-      });
+      await sendVerificationCode({ email: emailClean });
 
       toast.success("Đã gửi mã xác thực");
 

@@ -1,10 +1,18 @@
 .intrust-section {
-  background-color: #f8f9fa;
+  padding: 104px 0 76px;
+  background: #eef7f8;
 }
 
-.section-title h2 {
+.intrust-section .section-title h2 {
   font-size: 2.2rem;
   font-weight: 700;
+}
+
+.intrust-section .section-title > p {
+  margin: 10px auto 34px;
+  color: #526579;
+  font-size: 20px;
+  line-height: 1.6;
 }
 
 #intrust {
@@ -12,13 +20,14 @@
 }
 
 .single-intrust {
+  position: relative;
   background: #fff;
-  border-radius: 12px;
-  padding: 24px 20px;
+  border-radius: 14px;
+  padding: 30px 24px;
   margin-bottom: 30px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 22px rgba(18, 59, 93, .08);
   transition: all 0.3s ease;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #d7e8ea;
   text-align: center;
 }
 
@@ -30,25 +39,28 @@
 
 .single-intrust i {
   font-size: 40px;
-  color: #00aabb;
+  color: var(--medical-teal);
   margin-bottom: 15px;
 }
+
+.instruction-number { position: absolute; top: 18px; right: 20px; color: #b4d2d6; font-size: 18px; font-weight: 700; }
+.instruction-grid .col-lg-4 { flex-basis: calc(33.333% - 16px); }
 
 .single-intrust h4 {
   font-size: 22px;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin: 0 0 10px;
 }
 
 .single-intrust p {
   font-size: 18px;
-  color: #555;
+  color: #526579;
   line-height: 1.6;
 }
 
 /* Responsive fix: 1 cột mobile nhỏ, 2 cột tablet nhỏ */
 @media (max-width: 991.98px) {
-  .row {
+  .intrust-section .row {
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
@@ -76,7 +88,7 @@
 
 /* 2 cột cho mobile lớn (điện thoại ngang hoặc thiết bị lớn hơn 500px) */
 @media (min-width: 500px) and (max-width: 767.98px) {
-  .row {
+  .intrust-section .row {
     grid-template-columns: repeat(2, 1fr);
   }
 }
