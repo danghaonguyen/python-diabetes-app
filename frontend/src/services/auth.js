@@ -1,6 +1,7 @@
 import api from "./apiClient";
 
-// Đổi thẳng thành localhost để ép Frontend gọi về Flask đang chạy trong ảnh của bạn
+// Mọi request đi qua instance `api` (apiClient.js): baseURL = /api (proxy Vite),
+// withCredentials = true để gửi kèm cookie session của Flask.
 
 export async function registerUser(data) {
   return api.post("/register", {
@@ -8,8 +9,6 @@ export async function registerUser(data) {
     email: data.email,
     password: data.password,
     code: data.code,
-  }, {
-    withCredentials: true
   });
 }
 

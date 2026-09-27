@@ -1,7 +1,7 @@
-import joblib
 import os
+
+import joblib
 import pandas as pd
-import numpy as np
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -17,7 +17,7 @@ threshold = data_loaded["threshold"]
 def safe_cut(value, bins, labels):
     try:
         return pd.cut([value], bins=bins, labels=labels)[0]
-    except:
+    except (TypeError, ValueError):
         return 0
 
 

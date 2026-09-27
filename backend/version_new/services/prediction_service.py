@@ -1,14 +1,14 @@
-import joblib
 import os
-import pandas as pd
-import numpy as np
+
+import joblib
+
 from ml.prediction import predict_from_input as ml_predict
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MODEL_PATH = os.path.join(BASE_DIR, "ml", "model.pkl")
 
+# Chỉ cần nạp để xác nhận model tồn tại/đọc được (threshold đã nằm trong ml/prediction.py).
 data_loaded = joblib.load(MODEL_PATH)
-threshold = data_loaded["threshold"]
 
 
 # =========================
@@ -17,7 +17,7 @@ threshold = data_loaded["threshold"]
 def map_yes_no(x):
     try:
         return int(x)
-    except:
+    except (TypeError, ValueError):
         return 0
 
 
@@ -26,8 +26,11 @@ def map_yes_no(x):
 # =========================
 def calc_bmi(weight, height):
     try:
-        return float(weight) / (float(height) ** 2)
-    except:
+        height = float(height)
+        if height <= 0:
+            return 0.0
+        return float(weight) / (height ** 2)
+    except (TypeError, ValueError, ZeroDivisionError):
         return 0.0
 
 

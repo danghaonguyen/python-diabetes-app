@@ -15,7 +15,8 @@ from preprocessing import load_and_clean_data
 
 # ===== CONFIG =====
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_PATH = "F:/Python Project/data/diabetes_final_data_v2.csv"
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(BASE_DIR)))
+DATA_PATH = os.path.join(PROJECT_ROOT, "data", "diabetes_final_data_v2.csv")
 MODEL_DIR = BASE_DIR
 RANDOM_STATE = 42
 

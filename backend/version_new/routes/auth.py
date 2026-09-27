@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime, timedelta
+from contextlib import closing
 import random
 import MySQLdb.cursors
 
@@ -15,9 +16,9 @@ def clean(value):
 
 
 def get_user_by_email(email):
-    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
-    return cursor.fetchone()
+    with closing(mysql.connection.cursor(MySQLdb.cursors.DictCursor)) as cursor:
+        cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
+        return cursor.fetchone()
 
 
 # ================== SEND VERIFY CODE ==================
@@ -65,14 +66,13 @@ def register():
 
     hashed = generate_password_hash(password)
 
-    cursor = mysql.connection.cursor()
-    cursor.execute("""
-        INSERT INTO users (username, email, password)
-        VALUES (%s, %s, %s)
-    """, (username, email, hashed))
+    with closing(mysql.connection.cursor()) as cursor:
+        cursor.execute("""
+            INSERT INTO users (username, email, password)
+            VALUES (%s, %s, %s)
+        """, (username, email, hashed))
 
-    mysql.connection.commit()
-    cursor.close()
+        mysql.connection.commit()
 
     session.pop('verify_code', None)
 
@@ -141,15 +141,15 @@ def send_password_reset():
     reset_code = str(random.randint(100000, 999999))
     expiry = datetime.now() + timedelta(minutes=15)
 
-    cursor = mysql.connection.cursor()
-    cursor.execute("""
-        UPDATE users
-        SET reset_code=%s,
-            reset_code_expiry=%s
-        WHERE email=%s
-    """, (reset_code, expiry, email))
+    with closing(mysql.connection.cursor()) as cursor:
+        cursor.execute("""
+            UPDATE users
+            SET reset_code=%s,
+                reset_code_expiry=%s
+            WHERE email=%s
+        """, (reset_code, expiry, email))
 
-    mysql.connection.commit()
+        mysql.connection.commit()
 
     send_email(email, "Reset mật khẩu", f"Mã của bạn là: {reset_code}")
 
@@ -167,15 +167,14 @@ def verify_reset_code():
     if not email or not code:
         return jsonify({"message": "Thiếu dữ liệu"}), 400
 
-    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    with closing(mysql.connection.cursor(MySQLdb.cursors.DictCursor)) as cursor:
+        cursor.execute("""
+            SELECT reset_code, reset_code_expiry
+            FROM users
+            WHERE email = %s
+        """, (email,))
 
-    cursor.execute("""
-        SELECT reset_code, reset_code_expiry
-        FROM users
-        WHERE email = %s
-    """, (email,))
-
-    result = cursor.fetchone()
+        result = cursor.fetchone()
 
     if not result:
         return jsonify({"message": "Email không tồn tại"}), 404
@@ -207,15 +206,14 @@ def reset_password():
     if not all([email, code, new_password]):
         return jsonify({"message": "Thiếu dữ liệu"}), 400
 
-    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    with closing(mysql.connection.cursor(MySQLdb.cursors.DictCursor)) as cursor:
+        cursor.execute("""
+            SELECT reset_code, reset_code_expiry
+            FROM users
+            WHERE email = %s
+        """, (email,))
 
-    cursor.execute("""
-        SELECT reset_code, reset_code_expiry
-        FROM users
-        WHERE email = %s
-    """, (email,))
-
-    result = cursor.fetchone()
+        result = cursor.fetchone()
 
     if not result:
         return jsonify({"message": "Email không tồn tại"}), 404
@@ -231,14 +229,15 @@ def reset_password():
 
     hashed = generate_password_hash(new_password)
 
-    cursor.execute("""
-        UPDATE users
-        SET password=%s,
-            reset_code=NULL,
-            reset_code_expiry=NULL
-        WHERE email=%s
-    """, (hashed, email))
+    with closing(mysql.connection.cursor()) as cursor:
+        cursor.execute("""
+            UPDATE users
+            SET password=%s,
+                reset_code=NULL,
+                reset_code_expiry=NULL
+            WHERE email=%s
+        """, (hashed, email))
 
-    mysql.connection.commit()
+        mysql.connection.commit()
 
     return jsonify({"message": "Đổi mật khẩu thành công"}), 200

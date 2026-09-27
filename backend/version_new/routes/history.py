@@ -1,9 +1,21 @@
-from flask import Blueprint, jsonify, session
-import MySQLdb.cursors
-from db.db import mysql
+from contextlib import closing
 from datetime import datetime
 
+import MySQLdb.cursors
+from flask import Blueprint, jsonify, session
+
+from db.db import mysql
+
 history_bp = Blueprint('history', __name__)
+
+DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+
+
+def _format_datetime(value):
+    """Chuẩn hoá cột created_at (datetime -> chuỗi) để JSON hoá được."""
+    if isinstance(value, datetime):
+        return value.strftime(DATETIME_FORMAT)
+    return value
 
 
 # ================== LẤY LỊCH SỬ ==================
@@ -12,23 +24,22 @@ def get_history(user_id):
     if session.get('user_id') != user_id:
         return jsonify({"message": "Không có quyền truy cập"}), 403
 
-    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    try:
+        # closing() đảm bảo cursor luôn được đóng, kể cả khi query lỗi.
+        with closing(mysql.connection.cursor(MySQLdb.cursors.DictCursor)) as cursor:
+            cursor.execute("""
+                SELECT *
+                FROM predictions
+                WHERE user_id = %s
+                ORDER BY created_at DESC
+            """, (user_id,))
 
-    cursor.execute("""
-        SELECT *
-        FROM predictions
-        WHERE user_id = %s
-        ORDER BY created_at DESC
-    """, (user_id,))
+            rows = cursor.fetchall()
+    except Exception:
+        return jsonify({"message": "Không thể tải lịch sử. Vui lòng thử lại."}), 500
 
-    rows = cursor.fetchall()
-
-    # format datetime
     for row in rows:
-        if isinstance(row.get("created_at"), datetime):
-            row["created_at"] = row["created_at"].strftime("%Y-%m-%d %H:%M:%S")
-
-    cursor.close()
+        row["created_at"] = _format_datetime(row.get("created_at"))
 
     return jsonify(rows)
 
@@ -36,26 +47,26 @@ def get_history(user_id):
 # ================== XOÁ LỊCH SỬ ==================
 @history_bp.route('/history/<int:prediction_id>', methods=['DELETE'])
 def delete_prediction(prediction_id):
+    user_id = session.get('user_id')
+    if not user_id:
+        return jsonify({"message": "Vui lòng đăng nhập"}), 401
+
+    cursor = mysql.connection.cursor()
     try:
-        user_id = session.get('user_id')
-        if not user_id:
-            return jsonify({"message": "Vui lòng đăng nhập"}), 401
-
-        cursor = mysql.connection.cursor()
-
         cursor.execute(
             "DELETE FROM predictions WHERE id = %s AND user_id = %s",
-            (prediction_id, user_id)
+            (prediction_id, user_id),
         )
 
         if cursor.rowcount == 0:
-            cursor.close()
-            return jsonify({"message": "Không tìm thấy bản ghi hoặc không có quyền xóa"}), 404
+            mysql.connection.rollback()
+            return jsonify({"message": "Không thấy bản ghi hoặc không có quyền xóa"}), 404
 
         mysql.connection.commit()
-        cursor.close()
-
         return jsonify({"message": "Đã xóa thành công"}), 200
-
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    except Exception:
+        # Rollback để không bỏ treo transaction dang dở.
+        mysql.connection.rollback()
+        return jsonify({"message": "Xoá thất bại. Vui lòng thử lại."}), 500
+    finally:
+        cursor.close()

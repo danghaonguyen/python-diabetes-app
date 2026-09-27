@@ -70,7 +70,7 @@ function History() {
               try {
                 await api.delete(`/history/${id}`);
                 setHistory((records) => records.filter((item) => item.id !== id));
-                toast.success("Đã xóa dự đoán.");
+                toast.success("Đã xóa thành công.");
               } catch (requestError) {
                 toast.error(requestError.response?.data?.message || "Xóa thất bại.");
               } finally {

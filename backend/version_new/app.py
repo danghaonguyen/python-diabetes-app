@@ -1,20 +1,20 @@
 from flask import Flask
 from flask_cors import CORS
-from db import init_db, mysql
-from routes.predict import predict_bp
+
+import config
+from db.db import init_db, mysql
 from routes.auth import auth_bp
 from routes.history import history_bp
-import config
+from routes.predict import predict_bp
 
-print("🚀 APP IS RUNNING VERSION 999")
 
 def create_app():
     app = Flask(__name__)
 
-    app.secret_key = "super_secret_key_123"
-
-    # 🔥 FIX QUAN TRỌNG
     app.config.from_object(config)
+
+    # SECRET_KEY dùng để ký cookie session.
+    app.secret_key = config.SECRET_KEY
 
     CORS(app, supports_credentials=True, origins=[
         "http://localhost:3000",
@@ -34,16 +34,20 @@ def create_app():
 
 app = create_app()
 
+
 # 🔥 TEST DB CONNECTION
 @app.route("/test-db")
 def test_db():
     try:
         cur = mysql.connection.cursor()
-        cur.execute("SELECT 1")
-        cur.close()
+        try:
+            cur.execute("SELECT 1")
+        finally:
+            cur.close()
         return "DB OK"
     except Exception as e:
         return str(e)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

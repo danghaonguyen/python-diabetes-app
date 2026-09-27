@@ -1,0 +1,25 @@
+# ===== Environment / secrets =====
+# Chặn mọi file .env thật, chỉ cho phép .env.example (ở mọi thư mục con).
+.env
+.env.*
+!.env.example
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# ===== Node / frontend =====
+node_modules/
+dist/
+build/
+*.log
+
+# ===== OS / editor =====
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
