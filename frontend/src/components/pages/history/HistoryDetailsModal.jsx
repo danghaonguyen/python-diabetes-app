@@ -5,7 +5,6 @@ import {
   BarChart,
   CartesianGrid,
   Cell,
-  Legend,
   LabelList,
   ResponsiveContainer,
   Tooltip,
