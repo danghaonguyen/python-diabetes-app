@@ -35,7 +35,7 @@ def create_app():
 app = create_app()
 
 
-# 🔥 TEST DB CONNECTION
+# Kiểm tra kết nối DB. Chỉ trả thông báo chung, không lộ chi tiết lỗi ra ngoài.
 @app.route("/test-db")
 def test_db():
     try:
@@ -45,9 +45,8 @@ def test_db():
         finally:
             cur.close()
         return "DB OK"
-    except Exception as e:
-        return str(e)
-
-
+    except Exception:
+        app.logger.exception("Kết nối DB thất bại")
+        return "DB ERROR", 500
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=config.DEBUG)

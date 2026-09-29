@@ -74,7 +74,6 @@ python-diabetes-app/
 │   │       ├── prediction.py     # Inference
 │   │       ├── preprocessing.py  # Làm sạch & feature engineering
 │   │       └── train_model.py    # Script huấn luyện
-│   └── version_old/              # Phiên bản cũ (không dùng)
 │
 ├── frontend/
 │   ├── src/
@@ -143,6 +142,7 @@ MYSQL_PASSWORD=
 MYSQL_DB=diabetes_app
 
 SECRET_KEY=<chuỗi-ngẫu-nhiên-đủ-dài>
+DEBUG=0
 
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587

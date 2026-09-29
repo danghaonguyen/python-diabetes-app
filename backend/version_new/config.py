@@ -16,6 +16,9 @@ MYSQL_CURSORCLASS = "DictCursor"
 # Bắt buộc đặt SECRET_KEY trong .env khi deploy production.
 SECRET_KEY = os.getenv("SECRET_KEY", "dev-only-insecure-key")
 
+# Chỉ bật debug ở môi trường dev. Production PHẢI để DEBUG=0.
+DEBUG = os.getenv("DEBUG", "0") == "1"
+
 # Cấu hình cookie session: chỉ gửi qua HTTP, không cho JS đọc.
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SAMESITE = "Lax"
